@@ -1,11 +1,740 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-        <title>Título de mi Página</title>
-        </head>
-        <body>
-            <h1>Bienvenido a mi sitio</h1>
-                <p>Este es un párrafo de ejemplo.</p>
-                </body>
-                </html>
+:root {
+    --champagne: #fbf4eb;
+    --tickle-pink: #f283af;
+    --raspberry: #c43670;
+}
+
+body {
+    margin: 0;
+    background-color: var(--champagne);
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+/* --- Fondo y Destellos --- */
+#sparkle-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.sparkle {
+    position: absolute;
+    background: white;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    animation: twinkle 2s infinite;
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.7;
+        box-shadow: 0 0 8px 2px white;
+    }
+}
+
+/* --- Navbar --- */
+.navbar {
+    padding: 25px 50px;
+    position: relative;
+    z-index: 10;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    /* Logo izquierda, Menú derecha */
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    /* Estilo elegante */
+    font-style: italic;
+    font-size: 1.8rem;
+    color: var(--raspberry);
+    margin: 0;
+}
+
+.hamburger {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.hamburger span {
+    width: 30px;
+    height: 2px;
+    background-color: var(--raspberry);
+}
+
+/* --- Menú Lateral --- */
+.side-menu {
+    position: fixed;
+    right: -320px;
+    top: 0;
+    width: 300px;
+    height: 100%;
+    background: white;
+    transition: 0.4s ease-in-out;
+    z-index: 100;
+    padding: 40px;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.05);
+}
+
+.side-menu.active {
+    right: 0;
+}
+
+.close-btn {
+    font-size: 2rem;
+    cursor: pointer;
+    text-align: right;
+    color: var(--raspberry);
+}
+
+.menu-content h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ccc;
+    margin-top: 40px;
+}
+
+.menu-content a {
+    display: block;
+    text-decoration: none;
+    color: var(--raspberry);
+    font-size: 1.4rem;
+    margin: 15px 0;
+    font-weight: 700;
+}
+
+/* --- Títulos --- */
+.hero {
+    text-align: center;
+    margin-top: 120px;
+}
+
+.uppercase-title {
+    font-size: 1.2rem;
+    letter-spacing: 10px;
+    color: var(--raspberry);
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+.straight-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    /* Letra de molde muy gruesa */
+    font-size: 5.5rem;
+    color: var(--tickle-pink);
+    margin: 0;
+    letter-spacing: -2px;
+    /* Brillo leve */
+    text-shadow: 0 0 20px rgba(242, 131, 175, 0.6);
+}
+
+/* --- Variables de Color Moradas --- */
+:root {
+    --soft-purple: #f3e5f5;
+    /* Fondo muy claro */
+    --lavender: #e1bee7;
+    /* Detalles y bordes */
+    --deep-purple: #7b1fa2;
+    /* Texto principal */
+    --accent-purple: #9c27b0;
+    /* Hover y acentos */
+}
+
+.courses-section {
+    display: flex;
+    justify-content: center;
+    padding: 50px 20px;
+    z-index: 5;
+    position: relative;
+}
+
+.courses-table {
+    width: 100%;
+    max-width: 900px;
+    border-collapse: collapse;
+    background-color: rgba(255, 255, 255, 0.6);
+    /* Transparencia para que se vean los destellos */
+    backdrop-filter: blur(5px);
+    /* Efecto de vidrio esmerilado */
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(123, 31, 162, 0.1);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.courses-table thead {
+    background-color: var(--lavender);
+    color: var(--deep-purple);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+}
+
+.courses-table th,
+.courses-table td {
+    padding: 20px 25px;
+    text-align: left;
+    border-bottom: 1px solid var(--soft-purple);
+}
+
+.courses-table th {
+    font-weight: 900;
+}
+
+.courses-table td {
+    color: #555;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+/* Efecto al pasar el mouse por la fila */
+.courses-table tbody tr:hover {
+    background-color: var(--soft-purple);
+    transition: 0.3s;
+}
+
+/* Columna del nombre del curso en negrita */
+.courses-table td:first-child {
+    font-weight: 700;
+    color: var(--accent-purple);
+}
+
+/* Responsive: Ajuste para celulares */
+@media (max-width: 600px) {
+
+    .courses-table th,
+    .courses-table td {
+        padding: 12px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Contenedor principal */
+.seccion-inscripcion-pro {
+    max-width: 950px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.fila-curso {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.fila-curso:hover {
+    transform: translateX(10px);
+}
+
+.btn-lindo {
+    background: linear-gradient(135deg, #f283af, #c43670);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-weight: 900;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+/* Modales */
+.overlay-curso {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.ventana {
+    padding: 50px;
+    border-radius: 35px;
+    width: 90%;
+    max-width: 650px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+.equis {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 35px;
+    cursor: pointer;
+    color: #c43670;
+    font-weight: bold;
+}
+
+/* Colores de pantallas */
+.form-verde {
+    background: #d4edda;
+    border: 4px solid white;
+}
+
+.aula-estetica {
+    background: linear-gradient(135deg, #d4edda, #e0bbe4);
+    border: 5px solid white;
+}
+
+.btn-verde {
+    background: #2d5a3c;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    width: 100%;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.opcion-examen {
+    background: white;
+    border: 2px solid #c43670;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 15px;
+    width: 100%;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.opcion-examen:hover {
+    background: #c43670;
+    color: white;
+}
+
+.seccion-informativa {
+    width: 90%;
+    max-width: 1000px;
+    margin: 60px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.titulo-aprende {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: #c43670;
+    /* Raspberry de la paleta */
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+/* Reutilizamos el estilo de fila horizontal que ya teníamos */
+.fila-curso-horizontal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+    border: 2px solid white;
+    /* Un borde sutil para que se vea más aesthetic */
+}
+
+.contenido-texto p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #4a4a4a;
+    max-width: 80%;
+    /* Para que el texto no se pegue al botón */
+}
+
+
+/* Botón Naranja Estético */
+.btn-test-naranja {
+    background: linear-gradient(135deg, #f3cc97, #e67e22);
+    /* Naranja suave a vibrante */
+    color: white;
+    border: none;
+    padding: 20px 40px;
+    border-radius: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(230, 126, 34, 0.3);
+    transition: 0.3s;
+}
+
+.btn-test-naranja:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 15px 25px rgba(230, 126, 34, 0.4);
+}
+
+/* Ventana del Test */
+.ventana-test {
+    background: white;
+    padding: 50px;
+    border-radius: 30px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+    border: 5px solid #f3cc97;
+}
+
+.opcion-test {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    background: #fdfaf6;
+    border: 2px solid #f3cc97;
+    border-radius: 15px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.opcion-test:hover {
+    background: #f3cc97;
+    color: white;
+}
+
+.carrusel-contenedor {
+    max-width: 1000px;
+    position: relative;
+    margin: 40px auto;
+    overflow: hidden;
+    border-radius: 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.slide {
+    display: none;
+    width: 100%;
+}
+
+.slide img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    display: block;
+}
+
+.slide.active {
+    display: block;
+}
+
+.slide-caption {
+    position: absolute;
+    bottom: 30px;
+    left: 40px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    padding: 15px 30px;
+    border-radius: 20px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    color: #c43670;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 15px;
+    color: white;
+    font-size: 20px;
+    background-color: rgba(196, 54, 112, 0.5);
+    border-radius: 50%;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: 0.3s;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: #c43670;
+}
+
+.next {
+    right: 0;
+}
+
+.puntos-indicadores {
+    text-align: center;
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+}
+
+.punto {
+    cursor: pointer;
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.punto.active {
+    background-color: #c43670;
+    width: 30px;
+    border-radius: 10px;
+}
+
+.fade {
+    animation: fadeAnim 1s ease-in-out;
+}
+
+@keyframes fadeAnim {
+    from {
+        opacity: 0.5
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+.escena-3d {
+    width: 300px;
+    height: 300px;
+    margin: 80px auto;
+    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.estrella-volumen {
+    position: relative;
+    width: 0;
+    height: 0;
+    transform-style: preserve-3d;
+    animation: girarEstrealla 10s infinite linear;
+}
+
+.cara {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 150px solid;
+    border-bottom-color: inherit;
+    transform-origin: 50% 0%;
+    top: 0;
+    left: -50px;
+}
+
+/* Colores y Posiciones (5 puntas) */
+/* Delante */
+.f1 {
+    border-bottom-color: #f283af;
+    transform: rotateY(0deg) rotateX(20deg);
+}
+
+.f2 {
+    border-bottom-color: #c43670;
+    transform: rotateY(72deg) rotateX(20deg);
+}
+
+.f3 {
+    border-bottom-color: #f283af;
+    transform: rotateY(144deg) rotateX(20deg);
+}
+
+.f4 {
+    border-bottom-color: #c43670;
+    transform: rotateY(216deg) rotateX(20deg);
+}
+
+.f5 {
+    border-bottom-color: #f283af;
+    transform: rotateY(288deg) rotateX(20deg);
+}
+
+/* Detrás (Espejo) */
+.b1 {
+    border-bottom-color: #a32a5a;
+    transform: rotateY(0deg) rotateX(-20deg);
+}
+
+.b2 {
+    border-bottom-color: #8a1f48;
+    transform: rotateY(72deg) rotateX(-20deg);
+}
+
+.b3 {
+    border-bottom-color: #a32a5a;
+    transform: rotateY(144deg) rotateX(-20deg);
+}
+
+.b4 {
+    border-bottom-color: #8a1f48;
+    transform: rotateY(216deg) rotateX(-20deg);
+}
+
+.b5 {
+    border-bottom-color: #a32a5a;
+    transform: rotateY(288deg) rotateX(-20deg);
+}
+
+@keyframes girarEstrealla {
+    from {
+        transform: rotateY(0deg) rotateX(20deg);
+    }
+
+    to {
+        transform: rotateY(360deg) rotateX(20deg);
+    }
+}
+
+/* --- ESTILOS DE PERIÓDICO --- */
+.seccion-periodico {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 40px;
+    background-color: #fdfaf6;
+    /* Color papel hueso */
+    color: #2c2c2c;
+    border: 1px solid #e0e0e0;
+    box-shadow: 5px 5px 0px #f283af;
+    /* Sombra sólida estilo editorial */
+}
+
+.cabecera-periodico {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.fecha-periodico {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #c43670;
+}
+
+.titular-principal {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin: 10px 0;
+    line-height: 1.1;
+}
+
+.linea-doble {
+    border: none;
+    border-top: 4px double #333;
+    margin: 20px 0;
+}
+
+/* Diseño de Columnas */
+.cuerpo-periodico {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    /* Una columna ancha y una estrecha */
+    gap: 40px;
+    text-align: justify;
+}
+
+.letra-capital {
+    float: left;
+    font-size: 5rem;
+    line-height: 0.8;
+    padding-right: 10px;
+    padding-top: 4px;
+    font-family: 'Playfair Display', serif;
+    color: #c43670;
+}
+
+.parrafo-editorial {
+    font-family: 'Georgia', serif;
+    font-size: 1.15rem;
+    line-height: 1.6;
+}
+
+.subtitulo-periodico {
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    border-bottom: 2px solid #333;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.lista-noticias {
+    list-style: none;
+    padding: 0;
+    font-family: 'Georgia', serif;
+    font-size: 0.95rem;
+}
+
+.lista-noticias li {
+    margin-bottom: 15px;
+    border-bottom: 1px dotted #ccc;
+    padding-bottom: 10px;
+}
+
+.recuadro-cita {
+    background-color: #f283af;
+    color: white;
+    padding: 20px;
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+    border-radius: 5px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Adaptación para móviles */
+@media (max-width: 768px) {
+    .cuerpo-periodico {
+        grid-template-columns: 1fr;
+    }
+
+    .titular-principal {
+        font-size: 2.2rem;
+    }
+}
