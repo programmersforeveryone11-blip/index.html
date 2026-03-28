@@ -1,34 +1,272 @@
-# Gradle files
-.gradle/
-build/
+<!DOCTYPE html>
+<html lang="es">
 
-# Local configuration file (sdk path, etc)
-local.properties
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mariangles Cursos</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Montserrat:wght@400;900&display=swap"
+        rel="stylesheet">
+</head>
 
-# Log/OS Files
-*.log
+<body>
+    <div id="sparkle-container"></div>
 
-# Android Studio generated files and folders
-captures/
-.externalNativeBuild/
-.cxx/
-*.aab
-*.apk
-output-metadata.json
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">Mariangles Cursos</h1>
 
-# IntelliJ
-*.iml
-.idea/
-misc.xml
-deploymentTargetDropDown.xml
-render.experimental.xml
+            <div class="hamburger" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
 
-# Keystore files
-*.jks
-*.keystore
+    <div class="side-menu" id="side-menu">
+        <div class="close-btn" id="close-menu">&times;</div>
+        <div class="menu-content">
+            <div class="section">
+                <h3>Biografías</h3>
+                <a href="#">Lulu</a>
+                <a href="#">Mariangles</a>
+            </div>
+            <div class="section">
+                <h3>Contacto</h3>
+                <a href="#">Contacto 1</a>
+                <a href="#">Contacto 2</a>
+            </div>
+        </div>
+    </div>
 
-# Google Services (e.g. APIs or Firebase)
-google-services.json
+    <main class="hero">
+        <h2 class="uppercase-title">CURSOS</h2>
+        <h1 class="straight-title">GRATUITOS</h1>
+    </main>
+    <section class="courses-section">
+        <table class="courses-table">
+            <thead>
+                <tr>
+                    <th>Curso</th>
+                    <th>Duración</th>
+                    <th>Módulos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Marketing Digital</td>
+                    <td>1 Semana</td>
+                    <td>4 Módulos</td>
+                </tr>
+                <tr>
+                    <td>Taller de Moda</td>
+                    <td>3 Semanas</td>
+                    <td>7 Módulos</td>
+                </tr>
+                <tr>
+                    <td>Logotipos y Diseño Gráfico</td>
+                    <td>9 Semanas</td>
+                    <td>8 Módulos</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <section class="seccion-inscripcion-pro">
+        <div class="fila-curso" style="background-color: #ffb3ba;" onclick="iniciarOContinuar('Marketing Digital')">
+            <div class="info">
+                <h2>Marketing Digital</h2>
+                <p>Estrategias reales para crecer en redes y ventas. 7 temas clave.</p>
+                <span class="tag">Progreso guardado automáticamente</span>
+            </div>
+            <button class="btn-lindo">Inscribirme / Continuar</button>
+        </div>
 
-# Android Profiling
-*.hprof
+        <div class="fila-curso" style="background-color: #ffdfba;" onclick="iniciarOContinuar('Taller de Moda')">
+            <div class="info">
+                <h2>Taller de Moda</h2>
+                <p>Diseño y creación desde cero. 7 módulos de pura creatividad.</p>
+                <span class="tag">Progreso guardado automáticamente</span>
+            </div>
+            <button class="btn-lindo">Inscribirme / Continuar</button>
+        </div>
+
+        <div class="fila-curso" style="background-color: #e0bbe4;" onclick="iniciarOContinuar('Logotipos y Diseño')">
+            <div class="info">
+                <h2>Logotipos y Diseño</h2>
+                <p>Domina la identidad visual y el branding profesional en 7 pasos.</p>
+                <span class="tag">Progreso guardado automáticamente</span>
+            </div>
+            <button class="btn-lindo">Inscribirme / Continuar</button>
+        </div>
+
+        <div id="modal-principal" class="overlay-curso">
+            <div id="pantalla-registro" class="ventana form-verde" style="display:none;">
+                <span class="equis" onclick="cerrarYGuardar()">×</span>
+                <h2 id="titulo-form">Registro</h2>
+                <input type="email" id="user-email" placeholder="Tu correo electrónico">
+                <input type="tel" id="user-tel" placeholder="Tu teléfono">
+                <button class="btn-verde" onclick="finalizarRegistro()">Comenzar Curso</button>
+            </div>
+
+            <div id="pantalla-aula" class="ventana aula-estetica" style="display:none;">
+                <span class="equis" onclick="cerrarYGuardar()">×</span>
+                <div id="dinamico-aula"></div>
+            </div>
+        </div>
+    </section>
+    <section class="seccion-informativa">
+
+        <div class="contenedor-texto-informativo">
+            <h1 class="titulo-aprende">Aprende más sobre la moda</h1>
+        </div>
+
+        <div class="fila-curso-horizontal" style="background-color: #ffdfba;">
+            <div class="contenido-texto">
+                <h2>El Mundo de la Moda</h2>
+                <p>La moda es mucho más que ropa; es una forma de expresión cultural y personal. En este espacio
+                    exploramos desde la psicología del color hasta las técnicas de patronaje que dan vida a colecciones
+                    icónicas. Aprenderás a identificar tendencias globales y a desarrollar un ojo crítico para el diseño
+                    textil y la estética vanguardista.</p>
+                <div class="detalles-curso"><span>Explora</span> • <span>Crea</span> • <span>Diseña</span></div>
+            </div>
+            <button class="btn-registro-estetico" onclick="iniciarOContinuar('Taller de Moda')">Inscribirme</button>
+        </div>
+
+        <div class="fila-curso-horizontal" style="background-color: #ffb3ba;">
+            <div class="contenido-texto">
+                <h2>Marketing & Estrategia</h2>
+                <p>El "marketeam" creativo es el motor que impulsa las marcas hacia el éxito. Aquí profundizamos en cómo
+                    conectar productos con audiencias reales a través del storytelling y la pauta digital. Entenderás el
+                    comportamiento del consumidor moderno y cómo posicionar una marca de moda o diseño en un mercado
+                    altamente competitivo y digitalizado.</p>
+                <div class="detalles-curso"><span>Conecta</span> • <span>Vende</span> • <span>Escala</span></div>
+            </div>
+            <button class="btn-registro-estetico" onclick="iniciarOContinuar('Marketing Digital')">Inscribirme</button>
+        </div>
+
+        <div class="fila-curso-horizontal" style="background-color: #e0bbe4;">
+            <div class="contenido-texto">
+                <h2>Diseño Gráfico y Visual</h2>
+                <p>El diseño gráfico es el lenguaje visual de la era moderna. En este bloque nos enfocamos en la
+                    arquitectura de la imagen, la tipografía de alto contraste y la creación de logotipos memorables.
+                    Aprenderás a dominar las herramientas digitales para transformar conceptos abstractos en piezas
+                    gráficas profesionales que comuniquen mensajes claros y potentes.</p>
+                <div class="detalles-curso"><span>Visualiza</span> • <span>Comunica</span> • <span>Impacta</span></div>
+            </div>
+            <button class="btn-registro-estetico" onclick="iniciarOContinuar('Logotipos y Diseño')">Inscribirme</button>
+        </div>
+
+    </section>
+    <div style="text-align: center; margin: 40px 0;">
+        <button class="btn-test-naranja" onclick="abrirTest()">¿Quieres saber cuál es tu curso perfecto?</button>
+    </div>
+
+    <div id="modal-test" class="modal-overlay">
+        <div class="ventana-test">
+            <span class="equis" onclick="cerrarTest()">×</span>
+            <div id="contenido-test">
+            </div>
+        </div>
+    </div>
+    <div class="carrusel-contenedor">
+        <div class="carrusel-slides">
+            <div class="slide fade active">
+                <img src="img" alt="Moda">
+                <div class="slide-caption">Tendencias de Temporada</div>
+            </div>
+
+            <div class="slide fade">
+                <img src="https://via.placeholder.com/1200x500/ffdfba/ffffff?text=2.+Marketing+Digital" alt="Marketing">
+                <div class="slide-caption">Estrategias de Crecimiento</div>
+            </div>
+
+            <div class="slide fade">
+                <img src="https://via.placeholder.com/1200x500/e0bbe4/ffffff?text=3.+Diseño+Grafico" alt="Diseño">
+                <div class="slide-caption">Identidad Visual Creativa</div>
+            </div>
+
+            <div class="slide fade">
+                <img src="https://via.placeholder.com/1200x500/d4edda/ffffff?text=4.+Accesorios+y+Estilo"
+                    alt="Accesorios">
+                <div class="slide-caption">Detalles que Enamoran</div>
+            </div>
+
+            <div class="slide fade">
+                <img src="https://via.placeholder.com/1200x500/fbf4eb/c43670?text=5.+Branding+Personal" alt="Branding">
+                <div class="slide-caption">Crea tu Marca Propia</div>
+            </div>
+        </div>
+
+        <a class="prev" onclick="cambiarSlide(-1)">&#10094;</a>
+        <a class="next" onclick="cambiarSlide(1)">&#10095;</a>
+
+        <div class="puntos-indicadores">
+            <span class="punto active" onclick="irASlide(1)"></span>
+            <span class="punto" onclick="irASlide(2)"></span>
+            <span class="punto" onclick="irASlide(3)"></span>
+            <span class="punto" onclick="irASlide(4)"></span>
+            <span class="punto" onclick="irASlide(5)"></span>
+        </div>
+    </div>
+    <div class="escena-3d">
+        <div class="estrella-volumen">
+            <div class="cara f1"></div>
+            <div class="cara f2"></div>
+            <div class="cara f3"></div>
+            <div class="cara f4"></div>
+            <div class="cara f5"></div>
+            <div class="cara b1"></div>
+            <div class="cara b2"></div>
+            <div class="cara b3"></div>
+            <div class="cara b4"></div>
+            <div class="cara b5"></div>
+        </div>
+    </div>
+    <section class="seccion-periodico">
+        <div class="cabecera-periodico">
+            <span class="fecha-periodico">Edición Especial • 2026</span>
+            <h1 class="titular-principal">El Arte de Crear: La Nueva Era del Diseño</h1>
+            <hr class="linea-doble">
+        </div>
+
+        <div class="cuerpo-periodico">
+            <div class="columna-principal">
+                <p class="parrafo-editorial">
+                    <span class="letra-capital">L</span>a creatividad no tiene límites cuando se fusiona con la técnica
+                    correcta. En la última década, la industria de la moda y el marketing han dado un giro de 180
+                    grados, priorizando la autenticidad sobre la perfección masiva. Este fenómeno ha permitido que
+                    nuevos talentos emerjan con propuestas visuales únicas.
+                </p>
+                <p>
+                    Desde el boceto inicial de un logotipo hasta la costura final de una prenda de alta costura, el
+                    proceso es un viaje de autodescubrimiento. Las herramientas digitales actuales permiten que lo que
+                    antes tomaba meses, hoy se materialice en semanas, sin perder la esencia artesanal que define a un
+                    verdadero creador.
+                </p>
+            </div>
+
+            <div class="columna-lateral">
+                <h3 class="subtitulo-periodico">Notas Destacadas</h3>
+                <ul class="lista-noticias">
+                    <li><strong>Tendencias:</strong> El regreso del minimalismo noventero en las pasarelas.</li>
+                    <li><strong>Estrategia:</strong> Cómo el branding emocional está ganando la batalla digital.</li>
+                    <li><strong>Tips:</strong> 3 herramientas de IA que todo diseñador debe dominar este año.</li>
+                </ul>
+                <div class="recuadro-cita">
+                    "El diseño es el embajador silencioso de tu marca."
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
